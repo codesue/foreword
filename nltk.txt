@@ -2,6 +2,7 @@ brown
 english
 maxent_treebank_pos_tagger
 movie_reviews
+pickle
 punkt
 PY3
 RegexpTokenizer
