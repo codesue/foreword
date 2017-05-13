@@ -2,6 +2,7 @@ brown
 maxent_treebank_pos_tagger
 movie_reviews
 punkt
+PY3
 RegexpTokenizer
 SnowballStemmer
 stopwords
