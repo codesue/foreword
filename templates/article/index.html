@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+{% block body %}
+	
+	<div class="container article-page">
+		<div class="center">
+		<h4>Enjoy Reading</h4>
+		<h1><a href="{{ article.url }}"><span id="underline">{{ article.title }}</span></a></h1>
+	    <br />
+		</div>
+		
+		<div class="reader">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#foreword">FOREWORD</a></li>
+				<li><a data-toggle="tab" href="#article">ARTICLE</a></li>
+				<li><a data-toggle="tab" href="#vocabulary">VOCABULARY</a></li>
+				<li><a data-toggle="tab" href="#summary">SUMMARY</a></li>
+			</ul>
+
+			<div class="tab-content">
+			  
+				<div id="foreword" class="tab-pane fade in active">
+					<h3>Foreword</h3>
+					<h4>Keywords</h4>
+						<p>{{ article.keywords }}</p>
+					<h4>Synopsis</h4>
+						<p>{{ article.synopsis }}</p>
+					<img src="{{ article.top_image }}" class="img-responsive img-rounded" alt="main image of the article you selected"/>
+					<p class="text-center"><a href="{{ article.top_image }}"></a></p>
+				</div>
+				
+				<div id="article" class="tab-pane fade">
+					<h3>Article</h3>
+					<p>{{ article.text | safe }}</p> <br />
+					<h4><a href="{{ url_for('index') }}"><span id="underline">Click here to enjoy another article!</span></a></h4>					
+				</div>
+				
+				<div id="vocabulary" class="tab-pane fade">
+					<h3>Vocabulary</h3>
+					<h4>Below are the definitions of the words that you don't know in this text.</h4>
+					<h5>No words here? Hooray! You know all the words in this text!</h5>
+					
+					<!-- Defined -->
+					{% for word in article.definitions %}
+					<p>
+					<strong> {{ word.get("word") }} </strong> <br />
+					{% if word.get("pronunciation") %}
+					/ {{ word.get("pronunciation") }} / <br />
+					{% endif %}
+					
+					{% if word.get("pos") %}
+					{{ word.get("pos") }} <br />
+					{% endif %}
+					
+					{% if word.get("definitions") %}
+					<span id="color">definition(s):</span>  
+					{{ word.get("definitions")}} <br />
+					{% endif %}
+					
+					{% if word.get("translations") %}
+					<span id="color">translation(s):</span>  
+					{{ word.get("translations") }} <br />
+					{% endif %}
+					</p>
+					{% endfor %}
+					
+					<!-- Defined by Stem -->
+					<h4>These words were defined based on thier root form.</h4>	
+					{% for word in article.definitions_stem %}
+					<p>
+					<strong> {{ word.get("word") }} </strong> <br />
+					{% if word.get("pronunciation") %}
+					/ {{ word.get("pronunciation") }} / <br />
+					{% endif %}
+					
+					{% if word.get("pos") %}
+					{{ word.get("pos") }} <br />
+					{% endif %}
+					
+					{% if word.get("definitions") %}
+					<span id="color">definition(s):</span>  
+					{{ word.get("definitions") }} <br />
+					{% endif %}
+					
+					{% if word.get("translations") %}
+					<span id="color">translation(s):</span>  
+					{{ word.get("translations") }} <br />
+					{% endif %}
+					</p>
+					{% endfor %}
+					
+					
+					<!-- Defined by Hyphens -->
+					<h4>These words were defined based on thier likely compounds.</h4>	
+					{% for word in article.definitions_hyphens %}
+					<p>
+					<strong> {{ word.get("word") }} </strong> <br />
+					{% if word.get("pronunciation") %}
+					/ {{ word.get("pronunciation") }} / <br />
+					{% endif %}
+					
+					{% if word.get("pos") %}
+					{{ word.get("pos") }} <br />
+					{% endif %}
+					
+					{% if word.get("definitions") %}
+					<span id="color">definition(s):</span>  
+					{{ word.get("definitions") }} <br />
+					{% endif %}
+					
+					{% if word.get("translations") %}
+					<span id="color">translation(s):</span>  
+					{{ word.get("translations") }} <br />
+					{% endif %}
+					</p>
+					{% endfor %}
+					
+					<!-- Undefined Words -->
+					{% if article.undefined_words|length > 0 %}
+					<h4>The following word(s) could not be defined.</h4>
+					<p>
+						{% for word in article.undefined_words %}
+							{{ word }} <br />
+						{% endfor %}
+					</p>	
+					{% endif %}
+					
+				</div>
+				
+				<div id="summary" class="tab-pane fade">
+					<h3>Summary</h3>
+					<p>Below is a summary of your session. It includes the list of the words in this text you don't know as well 
+					as the list of the new words you do know. It also includes those of your vocabulary words with entries complete 
+					enough to satisfy a <a href="https://www.memrise.com/"><span id="underline">Memrise</span></a> friendly format.</p>
+					
+					<h4><span id="underline">Known Words</span></h4>
+					<p>
+						{% for word in article.known_words %}
+							{{ word }} <br />
+						{% endfor %}
+					</p>
+					
+					<h4><span id="underline">Unknown Words</span></h4>
+					<p>
+						{% for word in article.unknown_words %}
+							{{ word }} <br />
+						{% endfor %}
+					</p>				
+
+					<h4><span id="underline">Vocabulary Words</span></h4>
+					<p>Your vocabulary words only include words that could be found in the Folkets Lexikon dictionary. 
+					They do not include words that were defined by their root form or based on their likely compounds. To 
+					bulk add them to Memrise, just copy them, paste them to your Memrise bulk add form, and choose "Tab" 
+					as your word delimiter. Your course fields must be organized as [ Swedish word, Swedish definition, 
+					English translation, part of speech, pronunciation ].</p>
+					<p>
+						{% for word in article.vocabulary %}
+							{{ word | safe }} <br />
+						{% endfor %}
+					</p>
+					
+				</div>				
+			</div>
+		</div>	
+	</div>
+
+{% endblock %}

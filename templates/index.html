@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+
+	<div class="container homepage">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Foreword</h1>
+				<h4>A Better Read for the Better Reader</h4>
+				<p>Reading in a language you’re learning is a great way to build your vocabulary 
+				and increase your familiarity with the language. It is also tedious, frustrating, and boring. 
+				You constantly stop to look up words you don’t know. You lose your place in paragraphs 
+				because you keep looking away. You read the same sentences over and over again trying 
+				to regain your focus. If you’re not doing this, you’ve chosen a text that’s easy to read, 
+				easy to understand, and utterly unexciting. 
+				<br />
+				<i> Read better with Foreword. </i>
+				<br /><br />
+				<strong>Enter the URL of an article in the box below and click Prescreen to get started.</strong>
+				</p>
+			</div>
+		</div>	
+		
+		<!-- Form -->
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form action="{{ url_for('sort_words') }}" method=get>
+					<div class="form-group">		
+						<div class="col-md-12">
+							<input class="form-control" type="url" name="url_to_clean" placeholder="Paste the URL of an article" required>
+						</div>
+						<div class="col-md-12">
+							<br />
+							<button class="btn btn-success btn-lg">Prescreen</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+ 
+{% endblock %}

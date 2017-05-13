@@ -1,0 +1,154 @@
+
+/* Sitewide styles */
+
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+	background: #fff;
+	/* night */
+	color: #000B29;	
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+}
+
+h {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	/* prussian blue */
+	color: #0B3C5D
+}
+
+
+td {
+	vertical-align: top;
+	padding: 20px;
+	text-align: left;
+}
+
+/* hack to visually center checkboxes */
+td:nth-child(4){
+	padding: 20px 0px 20px 20px;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100% !important;
+	height: auto;
+}
+
+.form-control {
+	border-radius: 3px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	background: transparent;
+}
+
+.form-control:active, .form-control:focus {
+	outline: none;
+	box-shadow: none;
+	/* mist */
+	border-color: rgba(144, 175, 197, 1.0);
+}
+
+.input-lg {
+	height: 50px;
+}
+
+.btn, .btn-lg, .input-lg {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+  
+.btn-lg, .btn-group-lg>.btn {
+	padding: 10px 28px;
+	height: 52px;
+}
+.btn-large {
+	font-size: 18px;
+	padding: 20px 50px;
+	margin: 5px 10px;
+}
+.btn-success {
+	/* night */
+	background-color: #000B29;
+	background-image: none;
+	border: 0;
+	line-height: 1.8;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+	/* prussian blue */
+	background-color: #0B3C5D;
+	color: #fff;
+	border: 0;
+}
+
+/* Specific page styles */
+.container.homepage {
+	position: relative;
+	padding: 100px 15px;
+	text-align: center;
+}
+
+.container.article-page {
+	padding: 50px 15px 100px 15px;
+	letter-spacing: 0.01rem;
+	font-style: normal;
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.container.sort-words-page {
+	padding-top: 75px;
+	padding-bottom: 75px;
+	width: 100%;
+}
+
+.container.error-pages {
+	padding-top: 75px;
+	 margin: 0 auto;
+	 width: 50%; 
+}
+
+.wordlist {
+	margin: auto;
+	width: 60%;
+}
+
+.center {
+	text-align: center;
+}
+
+.reader {
+	margin: auto;
+	width: 90%;
+}
+
+.tab-content {
+	margin: auto;
+	width: 90%;
+}
+
+#color {
+	/* prussian blue */
+	color: #0B3C5D
+}
+
+#underline {
+	text-decoration: underline;
+}

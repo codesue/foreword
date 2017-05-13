@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+
+	<div class="container sort-words-page">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 center">
+				<h1>Which words do you know?</h1>
+				<h4>Check the box of each word you know then click Sort Words.</h4>
+				<br />
+			</div>
+		</div>		
+		<div class="wordlist">
+			<form action="{{ url_for('show_article') }}" method=get>
+				<div class="form-group">
+						<table>
+							<tr>
+								{% for word in filtered_article_words %}
+									{% if loop.first or loop.index % checkboxes_per_column == 1 %}
+										<td>
+									{% endif %}
+									<input type="checkbox" id="id_{{word}}" name="word" value="{{word}}">
+									<label for="id_{{word}}">{{word}}</label>
+									<br />
+									{% if loop.last or loop.index is divisibleby(checkboxes_per_column) %}
+										</td>
+									{% endif %}								
+								{% endfor %}
+							</tr> 
+						</table>
+					<div class="col-md-12 center">
+						<br />
+						<h5>The next page might take a few seconds to load. Thank you for your patience.</h5> <br />
+						<button class="btn btn-success btn-lg">Sort Words</button>						
+					</div>
+				</div>
+			</form>
+		</div>		
+	</div>
+
+{% endblock %}

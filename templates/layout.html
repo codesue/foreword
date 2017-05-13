@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="NYC based linguistics enthusiast passionate about language technologies."> 
+	<meta name="keywords" content="Suzen Fylke, Suzen, Fylke, prescreen, vocabulary, literacy, reading, language, Swedish, Svenska, NLTK"> 
+	<meta name="author" content="Suzen Fylke">
+
+    <title>Foreword</title>
+	<!-- Identity -->
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/suzenfylke_favicon.png') }}">
+    <!-- External CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Raleway:400,400i,600" rel="stylesheet">
+
+    <!-- Site -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	 
+</head>
+<body>
+
+    <section class="main">
+      {% block body  %}{% endblock %}
+    </section>
+
+</body>
+</html>
