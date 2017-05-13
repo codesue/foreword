@@ -4,8 +4,8 @@ A web app that makes reading Swedish more approachable and enjoyable.
 How it works:
 1. You select an article for Foreword to prescreen.
 2. Foreword automatically sorts the words in the article into lists of known words and unknown words based on the master lists of known words and unknown words you configure.
-3. If not all words in the article are automatically sorted, you'll be asked to choose the words you know from the words that could not be automatically sorted. 
-4. Foreweord parses the article and for keywords and a synopsis, defines the words you don't know, generates lists of your new known words and unknown words from the words you manually sorted, and presents your vocabulary words in a Memrise (bulk add) friendly format. 
+3. You'll be asked to choose the words you know from the words that could not be automatically sorted. 
+4. Foreword parses the article and for keywords and a synopsis, defines the words you don't know, generates lists of your new known words and unknown words from the words you manually sorted, and presents your vocabulary words in a Memrise (bulk add) friendly format. 
 
 Required: <a href="http://flask.pocoo.org/">flask</a>, <a href="http://www.nltk.org/">nltk</a>, <a href="https://newspaper.readthedocs.io/en/latest/">newspaper</a>, <a href="http://pyphen.org/">pyphen</a>
 
@@ -17,6 +17,11 @@ Usage:
 - Run <code>python app.py</code>
 - (optional but recommended) Save session summary by copy/pasting results to relevant files in /update_wordlists
 - (optional but recommended) After every few runs, update known_master.txt and unknown_master.txt by running update_wordlists.py and reconcile_learned_words.py in /update_wordlists. Regularly updating files with update_wordlist.py will increases the automation of the sorting process.
+
+To learn and to do:
+- [ ] Don't render template for Sort Words page if all words in the article are automatically are automatically sorted.
+- [ ] Make it possible to define words based on possible compounds. (i.e. Fix hyphenator.)
+- [ ] Use loader to make wait for results more pleasant. 
 
 Homepage:
 <img src="https://github.com/codesue/foreword/blob/master/screenshots/foreword_index.png" alt="screenshot of Foreword homepage" />
