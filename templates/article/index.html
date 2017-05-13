@@ -88,8 +88,8 @@
 					</p>
 					{% endfor %}
 					
-					
 					<!-- Defined by Hyphens -->
+					<!--
 					<h4>These words were defined based on thier likely compounds.</h4>	
 					{% for word in article.definitions_hyphens %}
 					<p>
@@ -113,6 +113,7 @@
 					{% endif %}
 					</p>
 					{% endfor %}
+					-->
 					
 					<!-- Undefined Words -->
 					{% if article.undefined_words|length > 0 %}
@@ -128,8 +129,8 @@
 				
 				<div id="summary" class="tab-pane fade">
 					<h3>Summary</h3>
-					<p>Below is a summary of your session. It includes the list of the words in this text you don't know as well 
-					as the list of the new words you do know. It also includes those of your vocabulary words with entries complete 
+					<p>Below is a summary of your session. It includes a list of the new words in this text you don't know as well 
+					as a list of the new words you know. It also includes those of your vocabulary words with entries complete 
 					enough to satisfy a <a href="https://www.memrise.com/"><span id="underline">Memrise</span></a> friendly format.</p>
 					
 					<h4><span id="underline">Known Words</span></h4>
@@ -141,7 +142,7 @@
 					
 					<h4><span id="underline">Unknown Words</span></h4>
 					<p>
-						{% for word in article.unknown_words %}
+						{% for word in article.new_unknown_words %}
 							{{ word }} <br />
 						{% endfor %}
 					</p>				

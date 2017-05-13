@@ -22,8 +22,9 @@ stemmer = SnowballStemmer("swedish")
 hyphenator = pyphen.Pyphen(lang="sv")
 stops = stopwords.words("swedish")
 
-# Known Words File
-master_known_words_filename = os.path.join(os.getcwd(), "prescreener", "known_master_updated.txt")
+# Wordlist Files
+master_known_words_filename = os.path.join(os.getcwd(), "prescreener", "known_master.txt")
+master_unknown_words_filename = os.path.join(os.getcwd(), "prescreener", "unknown_master.txt")
 	
 # FUNCTIONS	
 # Create wordlist from file (cleans data)
@@ -75,13 +76,22 @@ def remove_stopwords(wordlist, stops):
 
 	
 # Remove known words from wordlist (shared words)
-def remove_known_words(wordlist, known_words):
+def remove_shared_words(operand_wordlist, reference_wordlist):
 	"""Returns copy of wordlist with only those words that aren't in list of known words"""
 	filtered_list = []
-	for word in wordlist:
-		if word not in known_words:
+	for word in operand_wordlist:
+		if word not in reference_wordlist:
 			filtered_list.append(word)
 	return filtered_list
+	
+# Remove known words from wordlist (shared words)
+def get_shared_words(operand_wordlist, reference_wordlist):
+	"""Returns copy of wordlist with only those words that aren't in list of known words"""
+	shared_words = []
+	for word in operand_wordlist:
+		if word in reference_wordlist:
+			shared_words.append(word)
+	return shared_words
 	
 # Find likely context words, pref. of tokenized text with no stopwords
 def context_words(tokenized_text, number):
@@ -203,13 +213,13 @@ def define_by_parts(undefined_words):
 				for key in hyphens.keys():
 					for pair in hyphenator.iterate(key):
 						for item in pair:
-								# rename hyphen for ease and consistency
-								word = item
-								if word == child.get("value"):
-									word_entry = {}
-									word_entry["word"] = child.get("value")  + " (" + original_word + ")"
-									if child.get("class") != None:
-										word_entry["pos"] = child.get("class")
+							# rename hyphen for ease and consistency
+							word = item
+							if word == child.get("value") or stemmer.stem(word) == child.get("value"):
+								word_entry = {}
+								word_entry["word"] = child.get("value")  + " (" + original_word + ")"
+								if child.get("class") != None:
+									word_entry["pos"] = child.get("class")
 									definitions = ""
 									definitions_list = []
 									for definition in child.findall("definition"):
@@ -241,6 +251,7 @@ def define_by_parts(undefined_words):
 									undefined_words.remove(original_word)
 		return vocabulary	
 	
-# Read master list of known words
+# Read master wordlists
 master_known_words = read_wordlist(master_known_words_filename)
+master_unknown_words = read_wordlist(master_unknown_words_filename)
 	

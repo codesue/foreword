@@ -43,6 +43,7 @@ def sort_words():
 	global article_link
 	global article_words
 	global filtered_article_words
+	global unknown_words
 	
 	# Get article URL from user input
 	url_to_clean = request.args.get('url_to_clean')
@@ -76,7 +77,13 @@ def sort_words():
 	article_words = create_wordlist(article_text)
 	article_words = remove_numbers(article_words)
 	unique_article_words = make_unique(article_words)
-	filtered_article_words = remove_known_words(unique_article_words, master_known_words)
+	# Remove shared words (order important!)
+	#  1. Remove known words
+	filtered_article_words = remove_shared_words(unique_article_words, master_known_words)
+	#  2. Record unknown words
+	unknown_words = get_shared_words(filtered_article_words, master_unknown_words)
+	#  3. Remove unknown words
+	filtered_article_words = remove_shared_words(filtered_article_words, master_unknown_words)
 	
 	# Set maximum number of checkbox columns
 	checkboxes_per_column = ceil(len(filtered_article_words) / 4)
@@ -100,15 +107,22 @@ def show_article():
 	known_words = request.args.getlist("word")
 	
 	# Filter out new known words
-	# Deep copy for debugging and changing program later
-	new_filtered_article_words = remove_known_words(filtered_article_words, known_words)
-	undefined_words = deepcopy(new_filtered_article_words)
-	unknown_words = deepcopy(new_filtered_article_words)
+	new_filtered_article_words = remove_shared_words(filtered_article_words, known_words)
+	# Record unknown words not in master unknown words
+	#  Deep copy for debugging and changing program later
+	new_unknown_words = deepcopy(new_filtered_article_words)
+	# Update unknown words 
+	for word in new_filtered_article_words:
+		unknown_words.append(word)
+	# Want to define all unknown words, not just new ones
+	#  Deep copy for debugging and changing program later	
+	undefined_words = deepcopy(unknown_words)
 	
 	# Define words
 	definitions = define(undefined_words, defined_words)
 	definitions_stem = define_by_stem(undefined_words, defined_words)
-	definitions_hyphens = define_by_parts(undefined_words)
+	# Define by parts not needed with folkets lexikon
+	#definitions_hyphens = define_by_parts(undefined_words)
 	
 	# Find likely Context Words
 	stopless_article_words = remove_stopwords(article_words, stops)
@@ -141,11 +155,11 @@ def show_article():
 		 "synopsis": article.summary,
 		 "definitions": definitions,
 		 "definitions_stem": definitions_stem, 
-		 "definitions_hyphens": definitions_hyphens,
+		 #"definitions_hyphens": definitions_hyphens,
 		 "undefined_words": undefined_words,
 		 "vocabulary": vocabulary,
 		 "known_words": known_words,
-		 "unknown_words": unknown_words
+		 "new_unknown_words": new_unknown_words
 		 }
 		 
 	return render_template('article/index.html', article=a)
@@ -155,5 +169,5 @@ def page_not_found(e):
 	return render_template("/error-pages/404.html")
 
 if __name__ == "__main__":
-	app.debug = True
+	#app.debug = True
 	app.run()
