@@ -75,7 +75,7 @@ def remove_stopwords(wordlist, stops):
 	return no_stops
 
 	
-# Remove known words from wordlist (shared words)
+# Remove shared words from wordlist
 def remove_shared_words(operand_wordlist, reference_wordlist):
 	"""Returns copy of wordlist with only those words that aren't in list of known words"""
 	filtered_list = []
