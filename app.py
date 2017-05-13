@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, Markup
+from flask import Flask, request, render_template, redirect, url_for, Markup, session, flash
 from newspaper import Article
 from xml.etree  import ElementTree
 from copy import deepcopy
