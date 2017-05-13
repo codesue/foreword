@@ -1,4 +1,5 @@
 brown
+english
 maxent_treebank_pos_tagger
 movie_reviews
 punkt
@@ -6,4 +7,5 @@ PY3
 RegexpTokenizer
 SnowballStemmer
 stopwords
+tokenizers/punkt/PY3/english
 wordnet
