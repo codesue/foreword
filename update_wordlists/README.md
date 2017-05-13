@@ -13,4 +13,4 @@ This directory is a space to update wordlists for use with the Foreword web app 
 ## Save Foreword session
 After you prescreen an article using the Foreword web app, copy your new known words from the summary section and paste them to known.txt, your new unknown words to unknown.txt, and your vocabulary words to memrise.txt. 
 
-To bulk add vocabulary words to Memrise, just copy them, paste them to your Memrise bulk add form, and choose "Tab" as your word delimiter. Your course fields must be organized as [ Swedish word, Swedish definition, English translation, part of speech, pronunciation ].
+To bulk add vocabulary words to Memrise, just cut/copy them, paste them to your Memrise bulk add form, and choose "Tab" as your word delimiter. Your course fields must be organized as [ Swedish word, Swedish definition, English translation, part of speech, pronunciation ].
