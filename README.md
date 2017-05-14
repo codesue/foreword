@@ -19,6 +19,7 @@ Usage:
 - (optional but recommended) After every few runs, update known_master.txt and unknown_master.txt by running update_wordlists.py and reconcile_learned_words.py in /update_wordlists. Regularly updating files with update_wordlist.py will increases the automation of the sorting process.
 
 To learn and to do:
+- [ ] Center contents on Sort Words page.
 - [ ] Don't render template for Sort Words page if all words in the article are automatically are automatically sorted.
 - [ ] Make it possible to define words based on possible compounds. (i.e. Fix hyphenator.)
 - [ ] Use loader to make wait for results more pleasant. 
