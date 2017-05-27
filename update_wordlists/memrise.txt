@@ -2,3 +2,6 @@ gradvis	steg för steg, så småningom	bit by bit, gradually, by degrees, step b
 inre	som ligger längre in el. nära centrum	inner, interior	jj	In:re 
 lysa	ge ifrån sig ljus, skina	shine	vb	lY:ser 
 troligen	nog, antagligen, förmodligen	likely	ab	²trO:ligen 
+akut	hastigt påkommande, kritisk, överhängande	immediate, acute	jj	akU:t 
+kur	sjukdomsbehandling	treatment	nn	ku:r 
+ursprung	början (i tid och rum), upphov, härkomst	origin	nn	²U:r+spru@: 
