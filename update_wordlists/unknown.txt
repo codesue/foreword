@@ -76,3 +76,4 @@ qawasqar
 eventuella 
 akut 
 utrotningshotade 
+syftar 
