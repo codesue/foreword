@@ -6,7 +6,6 @@
 # usage: strictly a module, do not run
 #
 
-# -*- coding: utf-8 -*-
 import os
 import os.path
 import re
@@ -20,7 +19,6 @@ import xml.etree.ElementTree as ET
 # Tool Settings
 tokenizer = rt(r'\w+')
 stemmer = SnowballStemmer("swedish")
-hyphenator = pyphen.Pyphen(lang="sv")
 stops = stopwords.words("swedish")
 
 # Wordlist Files
@@ -75,7 +73,7 @@ def remove_stopwords(wordlist, stops):
 			no_stops.append(word)
 	return no_stops
 
-	
+
 # Remove shared from wordlist
 def remove_shared_words(operand_wordlist, reference_wordlist):
 	"""Returns copy of wordlist with only those words that aren't in list of known words"""
@@ -85,6 +83,7 @@ def remove_shared_words(operand_wordlist, reference_wordlist):
 			filtered_list.append(word)
 	return filtered_list
 	
+	
 # Remove known words from wordlist (shared words)
 def get_shared_words(operand_wordlist, reference_wordlist):
 	"""Returns copy of wordlist with only those words that aren't in list of known words"""
@@ -93,6 +92,7 @@ def get_shared_words(operand_wordlist, reference_wordlist):
 		if word in reference_wordlist:
 			shared_words.append(word)
 	return shared_words
+	
 	
 # Find likely context words, pref. of tokenized text with no stopwords
 def context_words(tokenized_text, number):
