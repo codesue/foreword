@@ -121,8 +121,6 @@ def show_article():
 	# Define words
 	definitions = define(undefined_words, defined_words)
 	definitions_stem = define_by_stem(undefined_words, defined_words)
-	# Define by parts not needed with folkets lexikon
-	#definitions_hyphens = define_by_parts(undefined_words)
 	
 	# Find likely Context Words
 	stopless_article_words = remove_stopwords(article_words, stops)
@@ -155,7 +153,6 @@ def show_article():
 		 "synopsis": article.summary,
 		 "definitions": definitions,
 		 "definitions_stem": definitions_stem, 
-		 #"definitions_hyphens": definitions_hyphens,
 		 "undefined_words": undefined_words,
 		 "vocabulary": vocabulary,
 		 "known_words": known_words,
