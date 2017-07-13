@@ -1,4 +1,3 @@
-
 var articleUrl = "";
   
 chrome.tabs.query({active: true, currentWindow: true}, function(arrayOfTabs) {
