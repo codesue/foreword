@@ -1,0 +1,1 @@
+Simple Chrome extension that redirects you from the article URL to the Sort Words page for that article. This way, you don't have to first go to the Foreword website and paste the article URL into the form. 
