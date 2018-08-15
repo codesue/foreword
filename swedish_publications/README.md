@@ -5,3 +5,5 @@
 - <a href="http://illvet.se/">Illustrerad Vetenskap</a>
 - <a href="https://modernpsykologi.se/">Modern Psykologi</a>
 - <a href="https://blogg.se/">Blogg.se</a>
+
+TODO: find cc and Swedish texts
