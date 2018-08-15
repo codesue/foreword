@@ -6,4 +6,4 @@
 - <a href="https://modernpsykologi.se/">Modern Psykologi</a>
 - <a href="https://blogg.se/">Blogg.se</a>
 
-TODO: find cc and Swedish texts
+TODO: find creative commons and Swedish texts
