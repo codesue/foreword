@@ -7,9 +7,7 @@ from nltk import FreqDist
 from prescreener.prescreen import *
 from math import ceil
 
-# Global Variables
-#  I know, I know, but there's a reason they exist!
-#  Do let me know if you know a better way. :) 
+# Global Variables (Yes, yes, I know.)
 article = ""
 article_link = ""
 html_string = ""
@@ -19,18 +17,6 @@ known_words = []
 unknown_words = []
 		
 app = Flask(__name__)
-
-# Debug logging
-import logging
-import sys
-# Defaults to stdout
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger(__name__)
-try: 
-	log.info('Logging to console')
-except:
-	_, ex, _ = sys.exc_info()
-	log.error(ex.message)
 
 @app.route('/')
 def index():
@@ -56,18 +42,8 @@ def sort_words():
 	article.parse()
 	
 	html_string = ElementTree.tostring(article.clean_top_node)
-	# For debugging
-	#try:
-	#	html_string = ElementTree.tostring(article.clean_top_node)
-	#except:
-	#	html_string = "Error converting html to string."
 
 	article.nlp()
-	# For debugging
-	#try:
-	#	article.nlp()
-	#except:
-	#	log.error("Couldn't process with NLP")
 	
 	article_link = url_to_clean
 	
@@ -85,7 +61,6 @@ def sort_words():
 	#  3. Remove unknown words
 	filtered_article_words = remove_shared_words(filtered_article_words, master_unknown_words)
 	
-	# Set maximum number of checkbox columns
 	checkboxes_per_column = ceil(len(filtered_article_words) / 4)
 	
 	return render_template('sort-words/index.html', filtered_article_words=filtered_article_words, checkboxes_per_column=checkboxes_per_column)
