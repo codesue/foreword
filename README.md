@@ -22,7 +22,8 @@ To learn and to do:
 - [ ] Center contents on Sort Words page.
 - [ ] Don't render template for Sort Words page if all words in the article are automatically are automatically sorted.
 - [ ] Make it possible to define words based on possible compounds. (i.e. Fix hyphenator.)
-- [ ] Use loader to make wait for results more pleasant. 
+- [ ] Use loader to make wait for results more pleasant.
+- [ ] Automate saving session summary; save wordlists in database.
 
 Homepage:
 <img src="https://github.com/codesue/foreword/blob/master/screenshots/foreword_index.png" alt="screenshot of Foreword homepage" />
